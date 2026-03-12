@@ -1,0 +1,355 @@
+{
+  "version": "2.0.0",
+  "name": "x1safe_v2",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        { "name": "payer", "isMut": true, "isSigner": true },
+        { "name": "adminConfig", "isMut": true, "isSigner": false },
+        { "name": "x1safeMint", "isMut": true, "isSigner": true },
+        { "name": "vaultAuthority", "isMut": false, "isSigner": false },
+        { "name": "vaultUsdcX", "isMut": true, "isSigner": false },
+        { "name": "vaultXnt", "isMut": true, "isSigner": false },
+        { "name": "vaultXen", "isMut": true, "isSigner": false },
+        { "name": "vaultXnm", "isMut": true, "isSigner": false },
+        { "name": "usdcXMint", "isMut": false, "isSigner": false },
+        { "name": "xntMint", "isMut": false, "isSigner": false },
+        { "name": "xenMint", "isMut": false, "isSigner": false },
+        { "name": "xnmMint", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "params", "type": { "defined": "InitializeParams" } }
+      ]
+    },
+    {
+      "name": "initializeOracle",
+      "accounts": [
+        { "name": "payer", "isMut": true, "isSigner": true },
+        { "name": "adminConfig", "isMut": false, "isSigner": false },
+        { "name": "admin", "isMut": false, "isSigner": true },
+        { "name": "oracleConfig", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "params", "type": { "defined": "OracleConfigParams" } }
+      ]
+    },
+    {
+      "name": "updatePrices",
+      "accounts": [
+        { "name": "adminConfig", "isMut": false, "isSigner": false },
+        { "name": "admin", "isMut": false, "isSigner": true },
+        { "name": "oracleConfig", "isMut": true, "isSigner": false }
+      ],
+      "args": [
+        { "name": "prices", "type": { "vec": { "defined": "TokenPrice" } } }
+      ]
+    },
+    {
+      "name": "deposit",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "adminConfig", "isMut": false, "isSigner": false },
+        { "name": "oracleConfig", "isMut": false, "isSigner": false },
+        { "name": "userPosition", "isMut": true, "isSigner": false },
+        { "name": "x1safeMint", "isMut": true, "isSigner": false },
+        { "name": "vaultAuthority", "isMut": false, "isSigner": false },
+        { "name": "userTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "vaultTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "userX1safeAccount", "isMut": true, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "amount", "type": "u64" }
+      ]
+    },
+    {
+      "name": "exit",
+      "accounts": [
+        { "name": "user", "isMut": false, "isSigner": true },
+        { "name": "adminConfig", "isMut": false, "isSigner": false },
+        { "name": "userPosition", "isMut": true, "isSigner": false },
+        { "name": "x1safeMint", "isMut": true, "isSigner": false },
+        { "name": "vaultAuthority", "isMut": false, "isSigner": false },
+        { "name": "vaultTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "userTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "userX1safeAccount", "isMut": true, "isSigner": false },
+        { "name": "burnAccount", "isMut": true, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdrawFromPool",
+      "accounts": [
+        { "name": "user", "isMut": false, "isSigner": true },
+        { "name": "adminConfig", "isMut": false, "isSigner": false },
+        { "name": "userPosition", "isMut": true, "isSigner": false },
+        { "name": "x1safeMint", "isMut": false, "isSigner": false },
+        { "name": "userX1safeAccount", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "amount", "type": "u64" }
+      ]
+    },
+    {
+      "name": "emergencyWithdraw",
+      "accounts": [
+        { "name": "adminConfig", "isMut": false, "isSigner": false },
+        { "name": "admin", "isMut": false, "isSigner": true },
+        { "name": "vaultAuthority", "isMut": false, "isSigner": false },
+        { "name": "vaultTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "destinationAccount", "isMut": true, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "amount", "type": "u64" }
+      ]
+    },
+    {
+      "name": "pauseDeposits",
+      "accounts": [
+        { "name": "adminConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": false, "isSigner": true }
+      ],
+      "args": []
+    },
+    {
+      "name": "resumeDeposits",
+      "accounts": [
+        { "name": "adminConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": false, "isSigner": true }
+      ],
+      "args": []
+    },
+    {
+      "name": "updateAdmin",
+      "accounts": [
+        { "name": "adminConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": false, "isSigner": true }
+      ],
+      "args": [
+        { "name": "newAdmin", "type": "publicKey" }
+      ]
+    },
+    {
+      "name": "updateFeeRecipient",
+      "accounts": [
+        { "name": "adminConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": false, "isSigner": true }
+      ],
+      "args": [
+        { "name": "newRecipient", "type": "publicKey" }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "AdminConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "admin", "type": "publicKey" },
+          { "name": "feeRecipient", "type": "publicKey" },
+          { "name": "burnAddress", "type": "publicKey" },
+          { "name": "x1safeMint", "type": "publicKey" },
+          { "name": "usdcXMint", "type": "publicKey" },
+          { "name": "xntMint", "type": "publicKey" },
+          { "name": "xenMint", "type": "publicKey" },
+          { "name": "xnmMint", "type": "publicKey" },
+          { "name": "vaultAuthority", "type": "publicKey" },
+          { "name": "depositFeeBps", "type": "u16" },
+          { "name": "exitFeeBps", "type": "u16" },
+          { "name": "depositsPaused", "type": "bool" },
+          { "name": "totalTvlUsd", "type": "u64" },
+          { "name": "totalX1safeMinted", "type": "u64" },
+          { "name": "totalX1safeBurned", "type": "u64" },
+          { "name": "activePositions", "type": "u64" },
+          { "name": "bump", "type": "u8" },
+          { "name": "createdAt", "type": "i64" }
+        ]
+      }
+    },
+    {
+      "name": "UserPosition",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "owner", "type": "publicKey" },
+          { "name": "depositMint", "type": "publicKey" },
+          { "name": "depositAmount", "type": "u64" },
+          { "name": "x1safeBalance", "type": "u64" },
+          { "name": "depositTime", "type": "i64" },
+          { "name": "lastUpdate", "type": "i64" },
+          { "name": "isInPool", "type": "bool" },
+          { "name": "isExited", "type": "bool" },
+          { "name": "depositPrice", "type": "u64" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    },
+    {
+      "name": "OracleConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "lastUpdate", "type": "i64" },
+          { "name": "priceDecimals", "type": "u8" },
+          { "name": "usdcXPrice", "type": "u64" },
+          { "name": "xntPrice", "type": "u64" },
+          { "name": "xenPrice", "type": "u64" },
+          { "name": "xnmPrice", "type": "u64" },
+          { "name": "usdcXConfidence", "type": "u64" },
+          { "name": "xntConfidence", "type": "u64" },
+          { "name": "xenConfidence", "type": "u64" },
+          { "name": "xnmConfidence", "type": "u64" },
+          { "name": "minUpdateFrequency", "type": "u32" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "InitializeParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "burnAddress", "type": "publicKey" },
+          { "name": "feeRecipient", "type": "publicKey" },
+          { "name": "depositFeeBps", "type": "u16" },
+          { "name": "exitFeeBps", "type": "u16" }
+        ]
+      }
+    },
+    {
+      "name": "OracleConfigParams",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "usdcXPrice", "type": "u64" },
+          { "name": "xntPrice", "type": "u64" },
+          { "name": "xenPrice", "type": "u64" },
+          { "name": "xnmPrice", "type": "u64" },
+          { "name": "priceDecimals", "type": "u8" },
+          { "name": "updateFrequencySecs", "type": "u32" }
+        ]
+      }
+    },
+    {
+      "name": "TokenPrice",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "tokenMint", "type": "publicKey" },
+          { "name": "price", "type": "u64" },
+          { "name": "confidence", "type": "u64" },
+          { "name": "timestamp", "type": "i64" }
+        ]
+      }
+    },
+    {
+      "name": "TokenType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          { "name": "USDCX" },
+          { "name": "XNT" },
+          { "name": "XEN" },
+          { "name": "XNM" }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "DepositEvent",
+      "fields": [
+        { "name": "user", "type": "publicKey", "index": false },
+        { "name": "depositMint", "type": "publicKey", "index": false },
+        { "name": "depositAmount", "type": "u64", "index": false },
+        { "name": "x1safeMinted", "type": "u64", "index": false },
+        { "name": "feeAmount", "type": "u64", "index": false },
+        { "name": "timestamp", "type": "i64", "index": false }
+      ]
+    },
+    {
+      "name": "ExitEvent",
+      "fields": [
+        { "name": "user", "type": "publicKey", "index": false },
+        { "name": "depositMint", "type": "publicKey", "index": false },
+        { "name": "returnedAmount", "type": "u64", "index": false },
+        { "name": "x1safeBurned", "type": "u64", "index": false },
+        { "name": "feeAmount", "type": "u64", "index": false },
+        { "name": "timestamp", "type": "i64", "index": false }
+      ]
+    },
+    {
+      "name": "WithdrawFromPoolEvent",
+      "fields": [
+        { "name": "user", "type": "publicKey", "index": false },
+        { "name": "amount", "type": "u64", "index": false },
+        { "name": "timestamp", "type": "i64", "index": false }
+      ]
+    },
+    {
+      "name": "PriceUpdateEvent",
+      "fields": [
+        { "name": "admin", "type": "publicKey", "index": false },
+        { "name": "tokenMint", "type": "publicKey", "index": false },
+        { "name": "oldPrice", "type": "u64", "index": false },
+        { "name": "newPrice", "type": "u64", "index": false },
+        { "name": "timestamp", "type": "i64", "index": false }
+      ]
+    },
+    {
+      "name": "EmergencyWithdrawEvent",
+      "fields": [
+        { "name": "admin", "type": "publicKey", "index": false },
+        { "name": "tokenMint", "type": "publicKey", "index": false },
+        { "name": "amount", "type": "u64", "index": false },
+        { "name": "timestamp", "type": "i64", "index": false }
+      ]
+    }
+  ],
+  "errors": [
+    { "code": 6000, "name": "UnauthorizedAdmin", "msg": "Unauthorized admin access" },
+    { "code": 6001, "name": "InvalidMint", "msg": "Invalid token mint address" },
+    { "code": 6002, "name": "InvalidTokenAccount", "msg": "Invalid token account" },
+    { "code": 6003, "name": "UnsupportedToken", "msg": "Unsupported token type" },
+    { "code": 6004, "name": "DepositsPaused", "msg": "Deposits are currently paused" },
+    { "code": 6005, "name": "InvalidDepositAmount", "msg": "Invalid deposit amount" },
+    { "code": 6006, "name": "DepositTooSmall", "msg": "Deposit amount below minimum" },
+    { "code": 6007, "name": "DepositTooLarge", "msg": "Deposit amount exceeds maximum" },
+    { "code": 6008, "name": "NoActiveDeposit", "msg": "No active position found" },
+    { "code": 6009, "name": "PositionNotInPool", "msg": "Position is not in pool" },
+    { "code": 6010, "name": "AlreadyWithdrawn", "msg": "Position already withdrawn from pool" },
+    { "code": 6011, "name": "InvalidPosition", "msg": "Invalid position owner" },
+    { "code": 6012, "name": "InsufficientBalance", "msg": "Insufficient X1SAFE balance" },
+    { "code": 6013, "name": "InvalidBurnAddress", "msg": "Invalid burn address" },
+    { "code": 6014, "name": "MathOverflow", "msg": "Math overflow" },
+    { "code": 6015, "name": "MathUnderflow", "msg": "Math underflow" },
+    { "code": 6016, "name": "StalePriceData", "msg": "Price data stale" },
+    { "code": 6017, "name": "LowPriceConfidence", "msg": "Price confidence too low" },
+    { "code": 6018, "name": "SlippageExceeded", "msg": "Slippage tolerance exceeded" },
+    { "code": 6019, "name": "InvalidFeeBps", "msg": "Invalid fee basis points" },
+    { "code": 6020, "name": "TokenAccountMismatch", "msg": "Token account mismatch" },
+    { "code": 6021, "name": "VaultAuthorityMismatch", "msg": "Vault authority mismatch" },
+    { "code": 6022, "name": "PositionAlreadyExited", "msg": "Position already exited" },
+    { "code": 6023, "name": "CannotExitWithdrawnPosition", "msg": "Cannot exit - position withdrawn from pool" },
+    { "code": 6024, "name": "OracleNotInitialized", "msg": "Oracle not initialized" },
+    { "code": 6025, "name": "InvalidPriceDecimals", "msg": "Invalid price decimals" },
+    { "code": 6026, "name": "PriceTooOld", "msg": "Price too old" },
+    { "code": 6027, "name": "EmergencyWithdrawNotAllowed", "msg": "Emergency withdrawal not available for this token" }
+  ],
+  "metadata": {
+    "address": "Fg6nWVLnLkHkxwFxk2YrMwf4sKVzNTVXxHAYjMoBzD9C"
+  }
+}
