@@ -36,7 +36,7 @@ use withdraw::*;
 use admin::*;
 use errors::*;
 
-declare_id!("Fg6nWVLnLkHkxwFxk2YrMwf4sKVzNTVXxHAYjMoBzD9C");
+declare_id!("GDd6RdVUwtx7qET8znKPtBPASm5U6qgzr3wz1GRmWrDz");
 
 /// Fixed decimals for X1SAFE token
 pub const X1SAFE_DECIMALS: u8 = 6;
