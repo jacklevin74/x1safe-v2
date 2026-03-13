@@ -6,6 +6,12 @@ import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-r
 import { Connection, clusterApiUrl } from '@solana/web3.js';
 import { Toaster } from 'react-hot-toast';
 import { Shield, Network } from 'lucide-react';
+
+const XIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 import { NETWORKS } from './constants';
 import { VaultDashboard } from './components/VaultDashboard';
 import '@solana/wallet-adapter-react-ui/styles.css';
@@ -58,6 +64,18 @@ function App() {
                   </div>
                   
                   <div className="flex items-center gap-4">
+                    {/* X / Twitter Link */}
+                    <a
+                      href="https://x.com/X1SafeVault"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="@X1SafeVault on X"
+                      className="flex items-center gap-1.5 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all text-sm"
+                    >
+                      <XIcon />
+                      <span className="hidden sm:inline text-xs font-medium">@X1SafeVault</span>
+                    </a>
+
                     {/* Network Selector */}
                     <div className="relative">
                       <Network className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -89,6 +107,15 @@ function App() {
                 <p className="mt-1">
                   Current: {NETWORKS[selectedNetwork].endpoint}
                 </p>
+                <a
+                  href="https://x.com/X1SafeVault"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 mt-2 text-gray-500 hover:text-white transition-colors"
+                >
+                  <XIcon />
+                  <span>@X1SafeVault</span>
+                </a>
               </div>
             </footer>
           </div>

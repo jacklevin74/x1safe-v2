@@ -12,7 +12,7 @@ const anchor = require("@coral-xyz/anchor");
 const { BN } = require("bn.js");
 
 // Program ID (Testnet)
-const PROGRAM_ID = new PublicKey("12izSQkcRswfrm9Nxy9X3NuypzH2N1To2KmDWCogsJHA");
+const PROGRAM_ID = new PublicKey("6rEbPJ3Kbeb4bi2TofbzFybpkzDBi9ZYciEFvUemnhac");
 const RPC_URL = "https://rpc.testnet.x1.xyz";
 
 // Token mints (Testnet)

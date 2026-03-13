@@ -8,7 +8,7 @@ skip-lint = false
 x1safe_v2 = "Fg6nWVLnLkHkxwFxk2YrMwf4sKVzNTVXxHAYjMoBzD9C"
 
 [programs.devnet]
-x1safe_v2 = "Fg6nWVLnLkHkxwFxk2YrMwf4sKVzNTVXxHAYjMoBzD9C"
+x1safe_v2 = "34K7WkZjuvtzbYAVpaGk3Je69BnghKsTScpWBoj6nHTj"
 
 [programs.mainnet]
 x1safe_v2 = "Fg6nWVLnLkHkxwFxk2YrMwf4sKVzNTVXxHAYjMoBzD9C"

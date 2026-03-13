@@ -11,7 +11,7 @@ export const NETWORKS = {
   devnet: {
     name: 'X1 Testnet',
     endpoint: 'https://rpc.testnet.x1.xyz',
-    programId: new PublicKey('GDd6RdVUwtx7qET8znKPtBPASm5U6qgzr3wz1GRmWrDz'),
+    programId: new PublicKey('4377BZC8xDor2mGdWQK6ABXkhBpD6in3k9oLFp5iKmue'),
     explorer: 'https://explorer.testnet.x1.xyz'
   }
 };

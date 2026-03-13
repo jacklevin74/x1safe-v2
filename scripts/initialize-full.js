@@ -12,7 +12,7 @@ const path = require("path");
 const BN = require("bn.js");
 
 // Testnet Program ID
-const PROGRAM_ID = new PublicKey("12izSQkcRswfrm9Nxy9X3NuypzH2N1To2KmDWCogsJHA");
+const PROGRAM_ID = new PublicKey("3ha5JkZi6bcwiinWo357pyFJcGH2UWi36AhGJn2LHJbD");
 const RPC_URL = "https://rpc.testnet.x1.xyz";
 
 // Token mints (Testnet)
