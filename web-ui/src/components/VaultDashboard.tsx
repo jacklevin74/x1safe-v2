@@ -99,20 +99,28 @@ export function VaultDashboard({ network }: VaultDashboardProps) {
         />
       </div>
 
-      {/* X / Twitter Follow Button */}
-      <div className="flex justify-center">
-        <a
-          href="https://x.com/X1SafeVault"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-3 px-8 py-4 bg-black border border-white/20 rounded-2xl text-white font-semibold text-base hover:bg-white/10 hover:border-white/40 hover:scale-105 transition-all duration-200 shadow-lg shadow-black/30"
-        >
-          <span className="flex items-center justify-center w-9 h-9 rounded-full bg-white text-black group-hover:bg-gray-100 transition-colors">
+      {/* X / Twitter Follow Banner */}
+      <div className="bg-gradient-to-r from-black via-gray-900 to-black border border-white/20 rounded-2xl p-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white text-black flex-shrink-0">
+              <XIcon />
+            </div>
+            <div>
+              <p className="text-white font-bold text-lg">Follow us on X</p>
+              <p className="text-gray-400 text-sm">Get the latest updates from @X1SafeVault</p>
+            </div>
+          </div>
+          <a
+            href="https://x.com/X1SafeVault"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-bold text-base rounded-xl hover:bg-gray-100 active:scale-95 transition-all duration-150 shadow-lg shadow-white/10 cursor-pointer select-none"
+          >
             <XIcon />
-          </span>
-          <span>Follow <span className="text-gray-300">@X1SafeVault</span> on X</span>
-          <span className="ml-1 text-gray-400 text-sm">→</span>
-        </a>
+            <span>Follow @X1SafeVault</span>
+          </a>
+        </div>
       </div>
     </div>
   );
