@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { Wallet } from 'lucide-react';
+
+const XIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 import { DepositPanel } from './DepositPanel';
 import { ExitPanel } from './ExitPanel';
 import { WithdrawPanel } from './WithdrawPanel';
@@ -91,6 +97,22 @@ export function VaultDashboard({ network }: VaultDashboardProps) {
           title="💰 Exchange Rate"
           description="Fixed rate: 1 X1SAFE = 0.001 USDC.X. Other tokens use oracle prices to calculate equivalent X1SAFE amount."
         />
+      </div>
+
+      {/* X / Twitter Follow Button */}
+      <div className="flex justify-center">
+        <a
+          href="https://x.com/X1SafeVault"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-3 px-8 py-4 bg-black border border-white/20 rounded-2xl text-white font-semibold text-base hover:bg-white/10 hover:border-white/40 hover:scale-105 transition-all duration-200 shadow-lg shadow-black/30"
+        >
+          <span className="flex items-center justify-center w-9 h-9 rounded-full bg-white text-black group-hover:bg-gray-100 transition-colors">
+            <XIcon />
+          </span>
+          <span>Follow <span className="text-gray-300">@X1SafeVault</span> on X</span>
+          <span className="ml-1 text-gray-400 text-sm">→</span>
+        </a>
       </div>
     </div>
   );
